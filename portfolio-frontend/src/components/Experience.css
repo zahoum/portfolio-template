@@ -1,0 +1,102 @@
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  border-left: 2px solid var(--border);
+  padding-left: 20px;
+  position: relative;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover {
+  border-color: var(--accent);
+  transform: translateX(5px);
+}
+
+/* النقطة الحمرا فـ الخط */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -26px; /* على حساب الـ border */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+}
+
+.timeline-year {
+  font-weight: 700;
+  color: var(--accent);
+  font-size: 0.9rem;
+  min-width: 50px;
+}
+
+.timeline-content {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.timeline-content h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.timeline-content p {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.timeline-tag {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* ألوان الـ Tags */
+.timeline-tag.success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.timeline-tag.intern {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.timeline-tag.pending {
+  background: rgba(234, 179, 8, 0.1);
+  color: #eab308;
+  border: 1px solid rgba(234, 179, 8, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .timeline-content { margin-left: 0; }
+}

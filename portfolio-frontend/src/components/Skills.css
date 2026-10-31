@@ -1,0 +1,123 @@
+/* الحاوية ديال الأكورديون */
+.skills-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* المربع ديال كل مهارة */
+.accordion-item {
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  border-color: rgba(239, 68, 68, 0.4);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ملي كتكون مفتوحة */
+.accordion-item.active {
+  border-color: var(--accent);
+  background: var(--bg);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.1);
+}
+
+/* الـ Header (الجزء اللي كيبان فوق) */
+.accordion-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+}
+
+.accordion-title-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.accordion-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover .accordion-icon,
+.accordion-item.active .accordion-icon {
+  background: var(--accent);
+  color: #fff;
+}
+
+.accordion-header h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0;
+}
+
+/* السهم اللي كيدور */
+.accordion-chevron {
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.accordion-chevron svg {
+  transition: transform 0.3s ease;
+}
+
+.accordion-chevron svg.rotate {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+
+/* الـ Content (المخبوع) */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+  padding: 0 20px;
+}
+
+/* ملي كتحل، كنعطيوه الطول ديالو */
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* يكفي باش يبانو الـ tags */
+  padding: 0 20px 20px 20px;
+}
+
+/* الـ Tags */
+.accordion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: var(--bg-alt);
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: all 0.2s;
+}
+
+.accordion-item.active .tag {
+  background: rgba(239, 68, 68, 0.05);
+  border-color: rgba(239, 68, 68, 0.2);
+  color: var(--text);
+}

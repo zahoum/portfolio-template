@@ -1,0 +1,217 @@
+/* ==================== THEME VARIABLES ==================== */
+:root {
+  --bg: #f4f4f5;
+  --bg-alt: #ffffff;
+  --text: #09090b;
+  --text-muted: #71717a;
+  --border: #e4e4e7;
+  --accent: #dc2626; /* أحمر */
+  --accent-hover: #b91c1c;
+  --navbar-bg: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme='dark'] {
+  --bg: #09090b; /* أسود مطلق */
+  --bg-alt: #18181b;
+  --text: #fafafa;
+  --text-muted: #a1a1aa;
+  --border: #27272a;
+  --accent: #ef4444; /* أحمر نيون */
+  --accent-hover: #f87171;
+  --navbar-bg: rgba(9, 9, 11, 0.85);
+}
+
+/* ==================== NAVBAR ==================== */
+.navbar {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 32px);
+  max-width: 1200px;
+  z-index: 1000;
+  background: var(--navbar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px; /* حواف ناعمة */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+.navbar--hidden {
+  transform: translateX(-50%) translateY(-150%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.navbar__container {
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* ===== LOGO ===== */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  border: 1.5px solid var(--text);
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--text);
+  letter-spacing: -1px;
+}
+
+.logo-box .logo-t {
+  color: var(--accent); /* T تكون حمرا */
+}
+
+.logo-text-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+}
+
+.logo-name span {
+  color: var(--accent);
+}
+
+.logo-title {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ===== LINKS ===== */
+.navbar__links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navbar__links a {
+  position: relative;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.navbar__links a:hover,
+.navbar__links a.active {
+  color: var(--accent);
+}
+
+/* الخط اللي كيبان تحت (Active line) */
+.navbar__links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ===== ACTIONS ===== */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Theme Toggle */
+.nav-btn--theme {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.nav-btn--theme:hover {
+  color: var(--text);
+}
+
+/* Hire Me Button */
+.navbar__hire {
+  display: inline-flex;
+  align-items: center;
+  background: var(--accent);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.navbar__hire:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3); /* Glow */
+}
+
+/* Burger */
+.navbar__burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+.navbar__burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 950px) {
+  .navbar__links { display: none; }
+  .navbar__burger { display: flex; }
+  
+  .navbar__links--open {
+    display: flex;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-alt);
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+}

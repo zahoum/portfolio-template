@@ -1,0 +1,162 @@
+.cv-section {
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden; /* باش ميديرش scroll */
+}
+
+.cv-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 50px;
+}
+
+/* ===== النص و الأزرار ===== */
+.cv-content {
+  max-width: 500px;
+}
+
+.cv-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.cv-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ستايل الأزرار (Smooth & Zwinin) */
+.cv-buttons .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  border-radius: 30px; /* دائريين */
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* زر Contact */
+.cv-buttons .btn--primary {
+  background: var(--accent);
+  color: #fff;
+  border: 2px solid var(--accent);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+}
+
+.cv-buttons .btn--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* زر Download */
+.cv-buttons .btn--outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.cv-buttons .btn--outline:hover {
+  border-color: var(--text);
+  background: var(--bg);
+  transform: translateY(-3px);
+}
+
+
+/* ===== التصويرة فـ دائرة ===== */
+.cv-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* الدائرة الكبيرة ديال التصويرة */
+.cv-profile-img {
+  width: 320px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 50%; /* دائرة كبيرة */
+  border: 4px solid var(--bg-alt);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 2;
+  filter: grayscale(20%); /* شوية ديال الغموض باش يجي hacker style */
+  transition: all 0.5s ease;
+}
+
+.cv-profile-img:hover {
+  filter: grayscale(0%);
+  transform: scale(1.02);
+}
+
+/* حلقة نيون حمرا كتدور حوالين التصويرة */
+.cv-image-ring {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  border: 2px dashed var(--accent);
+  animation: spin 20s linear infinite;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+/* نقطة حمرا صغيرة كتدور مع الحلقة */
+.cv-image-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+  z-index: 3;
+  transform: translateX(-50%);
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .cv-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .cv-content {
+    margin: 0 auto;
+  }
+
+  .cv-buttons {
+    justify-content: center;
+  }
+
+  .cv-profile-img {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .cv-image-ring {
+    width: 280px;
+    height: 280px;
+  }
+}
